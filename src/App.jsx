@@ -7,7 +7,11 @@ import circos from "./circos.json";
 const PopupChildren = (properties) => {
   return (
     <div>
-      {JSON.stringify(properties)}
+      <ul style={{'padding-left': '1rem' }}>
+        <li><b>Region :</b> { properties.nom_reg }</li>
+        <li><b>Département :</b> { properties.nom_dpt }</li>
+        <li><b>Ciro n° :</b> { properties.num_circ }</li>
+      </ul>
     </div>
   );
 };
