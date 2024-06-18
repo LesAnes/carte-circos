@@ -72,30 +72,30 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
         {facet === facets.leg22 ? (
           <>
             <li>
-              <b>Député sortant :</b> {d4gCircoData.depute_sortant} (
-              {d4gCircoData.gagnant_leg22})
+              <b>Député sortant :</b> {d4gCircoData?.depute_sortant} (
+              {d4gCircoData?.gagnant_leg22})
             </li>
             <div className="p-4">
               <div className="grid gap-4">
                 <h6 className="text-xl">1er tour</h6>
                 <ResultFormatter
                   label="NFP"
-                  percentage={d4gCircoData.NFP_leg22t1}
+                  percentage={d4gCircoData?.NFP_leg22t1}
                 />
                 <ResultFormatter
                   label="ENS"
-                  percentage={d4gCircoData.ENS_leg22t1}
+                  percentage={d4gCircoData?.ENS_leg22t1}
                 />
                 <ResultFormatter
                   label="RN"
-                  percentage={d4gCircoData.RN_leg22t1}
+                  percentage={d4gCircoData?.RN_leg22t1}
                 />
                 <div className="text-sm text-gray-600 my-2">
                   <li>
-                    <b>Inscrits :</b> {d4gCircoData.inscrits_leg22}
+                    <b>Inscrits :</b> {d4gCircoData?.inscrits_leg22}
                   </li>
                   <li>
-                    <b>Abstention :</b> {d4gCircoData.abstentions_leg22t1}
+                    <b>Abstention :</b> {d4gCircoData?.abstentions_leg22t1}
                   </li>
                 </div>
               </div>
@@ -105,24 +105,24 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
                 <h6 className="text-xl">2nd tour</h6>
                 <ResultFormatter
                   label="NFP"
-                  percentage={d4gCircoData.NFP_leg22t2}
-                  trend={d4gCircoData.ecart_leg22}
+                  percentage={d4gCircoData?.NFP_leg22t2}
+                  trend={d4gCircoData?.ecart_leg22}
                 />
                 <ResultFormatter
                   label="ENS"
-                  percentage={d4gCircoData.ENS_leg22t2}
+                  percentage={d4gCircoData?.ENS_leg22t2}
                 />
                 <ResultFormatter
                   label="RN"
-                  percentage={d4gCircoData.RN_leg22t2}
+                  percentage={d4gCircoData?.RN_leg22t2}
                 />
 
                 <div className="text-sm text-gray-600 my-2">
                   <li>
-                    <b>Inscrits :</b> {d4gCircoData.inscrits_leg22}
+                    <b>Inscrits :</b> {d4gCircoData?.inscrits_leg22}
                   </li>
                   <li>
-                    <b>Abstention :</b> {d4gCircoData.abstentions_leg22t2}
+                    <b>Abstention :</b> {d4gCircoData?.abstentions_leg22t2}
                   </li>
                 </div>
               </div>
@@ -133,32 +133,32 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
           <>
             <div className="p-4">
               <li>
-                <b>Vainqueur :</b> {d4gCircoData.gagnant_euro}
+                <b>Vainqueur :</b> {d4gCircoData?.gagnant_euro}
               </li>
               <div className="grid gap-4 my-2">
                 <ResultFormatter
                   label="NFP"
-                  percentage={d4gCircoData.NFP_euro}
-                  trend={d4gCircoData.dyn_NFP}
+                  percentage={d4gCircoData?.NFP_euro}
+                  trend={d4gCircoData?.dyn_NFP}
                 />
                 <ResultFormatter
                   label="ENS"
-                  percentage={d4gCircoData.ENS_euro}
-                  trend={d4gCircoData.dyn_ENS}
+                  percentage={d4gCircoData?.ENS_euro}
+                  trend={d4gCircoData?.dyn_ENS}
                 />
                 <ResultFormatter
                   label="RN"
-                  percentage={d4gCircoData.RN_euro}
-                  trend={d4gCircoData.dyn_RN}
+                  percentage={d4gCircoData?.RN_euro}
+                  trend={d4gCircoData?.dyn_RN}
                 />
               </div>
 
               <div className="text-sm text-gray-600 my-2">
                 <li>
-                  <b>Inscrits :</b> {d4gCircoData.inscrits_euro}
+                  <b>Inscrits :</b> {d4gCircoData?.inscrits_euro}
                 </li>
                 <li>
-                  <b>Abstention :</b> {d4gCircoData.abstentions_euro}
+                  <b>Abstention :</b> {d4gCircoData?.abstentions_euro}
                 </li>
               </div>
             </div>
