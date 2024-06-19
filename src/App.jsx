@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { GeoJSON, MapContainer, TileLayer } from "react-leaflet";
 import "./App.css";
+import { getDatanUrl, partyColor } from "./utils";
 
 import circos from "./circos.json";
 
@@ -26,19 +27,6 @@ const ResultFormatter = ({ label, percentage, trend }) => {
     </div>
   );
 };
-
-function partyColor(party) {
-  switch (party) {
-    case "RN":
-      return "#0D378A";
-    case "ENS":
-      return "#ffeb00";
-    case "NFP":
-      return "#cc2443";
-    case "LR":
-      return "#0066CC";
-  }
-}
 
 function circoColor(feature, d4gdata, facet) {
   const d4gCircoData = d4gdata.filter(
@@ -75,6 +63,15 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
               <b>Député sortant :</b> {d4gCircoData?.depute_sortant} (
               {d4gCircoData?.gagnant_leg22})
             </li>
+            <a
+              href={getDatanUrl(
+                d4gCircoData?.dept_code,
+                d4gCircoData?.dept_name,
+                d4gCircoData?.depute_sortant
+              )}
+            >
+              Voir son activité parlementaire
+            </a>
             <div className="p-4">
               <div className="grid gap-4">
                 <h6 className="text-xl">1er tour</h6>
@@ -90,7 +87,7 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
                   label="RN"
                   percentage={d4gCircoData?.RN_leg22t1}
                 />
-                <div className="text-sm text-gray-600 my-2">
+                <div className="my-2 text-sm text-gray-600">
                   <li>
                     <b>Inscrits :</b> {d4gCircoData?.inscrits_leg22}
                   </li>
@@ -117,7 +114,7 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
                   percentage={d4gCircoData?.RN_leg22t2}
                 />
 
-                <div className="text-sm text-gray-600 my-2">
+                <div className="my-2 text-sm text-gray-600">
                   <li>
                     <b>Inscrits :</b> {d4gCircoData?.inscrits_leg22}
                   </li>
@@ -153,7 +150,7 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
                 />
               </div>
 
-              <div className="text-sm text-gray-600 my-2">
+              <div className="my-2 text-sm text-gray-600">
                 <li>
                   <b>Inscrits :</b> {d4gCircoData?.inscrits_euro}
                 </li>
@@ -171,7 +168,7 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
 
 function SidePanel({ selectedCirco, d4gdata, facet, setFacet }) {
   return (
-    <div className="max-w-sm mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-sm p-6 mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         Analyse des circonscriptions
       </h5>
@@ -238,7 +235,7 @@ function App() {
   return (
     <>
       {!loading ? (
-        <div className="h-full flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col h-full gap-4 md:flex-row">
           <SidePanel
             selectedCirco={selectedCirco}
             d4gdata={d4gdata}
@@ -247,7 +244,7 @@ function App() {
           />
 
           <MapContainer
-            className="h-full min-h-96 md:w-2/3 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            className="h-full p-6 bg-white border border-gray-200 rounded-lg shadow min-h-96 md:w-2/3 dark:bg-gray-800 dark:border-gray-700"
             center={center}
             zoom={6}
             scrollWheelZoom={true}
