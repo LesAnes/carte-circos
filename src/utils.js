@@ -35,7 +35,7 @@ export function getDatanUrl(department_code, department, deputee_name) {
   return `https://datan.fr/deputes/${sluggifiedDepartment}-${department_code}/depute_${sluggifiedDeputeeName}`;
 }
 
-export function partyColor(party) {
+export function getPartyColor(party) {
   switch (party) {
     case "RN":
       return "#0D378A";
@@ -46,4 +46,12 @@ export function partyColor(party) {
     case "LR":
       return "#0066CC";
   }
+}
+
+export function getTrendColor(trend) {
+  return trend > 0
+    ? "text-green-500"
+    : trend < 0
+    ? "text-red-500"
+    : "text-gray-500";
 }
