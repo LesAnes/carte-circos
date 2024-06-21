@@ -36,9 +36,11 @@ const TrendFormatter = ({ label, trend }) => {
 };
 
 function SelectedCircoResults({ properties, d4gdata, facet }) {
-  const d4gCircoData = d4gdata.filter(
-    (d) => d.dept_circo_code === properties.ID
-  )[0];
+  const d4gCircoData = d4gdata.find(
+    (d) =>
+      d["Code du département"] === properties.code_dpt &&
+      d["Code de la circonscription"] === properties.num_circ
+  );
 
   return (
     <div>
@@ -52,7 +54,38 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
         <li>
           <b>Circo n° :</b> {properties.num_circ}
         </li>
-
+        {facet === facets.euro19 ? (
+          <>
+            <li>
+              <b>Vainqueur :</b> {d4gCircoData?.gagnant_eur19}
+            </li>
+            <div className="p-4">
+              <div className="grid gap-4">
+                <h6 className="text-xl">1er tour</h6>
+                <ResultFormatter
+                  label="NFP"
+                  percentage={d4gCircoData?.NFP_euro19}
+                />
+                <ResultFormatter
+                  label="ENS"
+                  percentage={d4gCircoData?.ENS_euro19}
+                />
+                <ResultFormatter
+                  label="RN"
+                  percentage={d4gCircoData?.RN_euro19}
+                />
+                <div className="my-2 text-sm text-gray-600">
+                  <li>
+                    <b>Inscrits :</b> {d4gCircoData?.inscrits_euro19}
+                  </li>
+                  <li>
+                    <b>Abstention :</b> {d4gCircoData?.abstentions_euro19}
+                  </li>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : null}
         {facet === facets.leg22 ? (
           <>
             <li>
@@ -61,8 +94,8 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
             </li>
             <a
               href={getDatanUrl(
-                d4gCircoData?.dept_code,
-                d4gCircoData?.dept_name,
+                d4gCircoData?.["Code du département"],
+                d4gCircoData?.["Département"],
                 d4gCircoData?.depute_sortant
               )}
               target="_blank"
@@ -127,32 +160,32 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
           <>
             <div className="p-4">
               <li>
-                <b>Vainqueur :</b> {d4gCircoData?.gagnant_euro}
+                <b>Vainqueur :</b> {d4gCircoData?.gagnant_euro24}
               </li>
               <div className="grid gap-4 my-2">
                 <ResultFormatter
                   label="NFP"
-                  percentage={d4gCircoData?.NFP_euro}
+                  percentage={d4gCircoData?.NFP_euro24}
                   trend={d4gCircoData?.dyn_NFP}
                 />
                 <ResultFormatter
                   label="ENS"
-                  percentage={d4gCircoData?.ENS_euro}
+                  percentage={d4gCircoData?.ENS_euro24}
                   trend={d4gCircoData?.dyn_ENS}
                 />
                 <ResultFormatter
                   label="RN"
-                  percentage={d4gCircoData?.RN_euro}
+                  percentage={d4gCircoData?.RN_euro24}
                   trend={d4gCircoData?.dyn_RN}
                 />
               </div>
 
               <div className="my-2 text-sm text-gray-600">
                 <li>
-                  <b>Inscrits :</b> {d4gCircoData?.inscrits_euro}
+                  <b>Inscrits :</b> {d4gCircoData?.inscrits_euro24}
                 </li>
                 <li>
-                  <b>Abstention :</b> {d4gCircoData?.abstentions_euro}
+                  <b>Abstention :</b> {d4gCircoData?.abstentions_euro24}
                 </li>
               </div>
             </div>

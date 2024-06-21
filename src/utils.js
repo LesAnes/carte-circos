@@ -38,12 +38,22 @@ export function getDatanUrl(department_code, department, deputee_name) {
 export function getPartyColor(party) {
   switch (party) {
     case "RN":
+    case "LRN":
+    case "PRENEZ LE POUVOIR":
       return "#0D378A";
     case "ENS":
+    case "LENS":
+    case "RENAISSANCE":
       return "#ffeb00";
+    case "EUROPE ÉCOLOGIE":
+      return "#aadd44";
     case "NFP":
+    case "LFI":
+    case "LUG":
+    case "LA FRANCE INSOUMISE":
       return "#cc2443";
     case "LR":
+    case "LLR":
       return "#0066CC";
   }
 }

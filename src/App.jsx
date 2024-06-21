@@ -8,7 +8,9 @@ import { getPartyColor } from "./utils";
 
 function circoColor(feature, d4gdata, facet) {
   const d4gCircoData = d4gdata.filter(
-    (d) => d.dept_circo_code === feature.properties.ID
+    (d) =>
+      d["Code du département"] === feature.properties.code_dpt &&
+      d["Code de la circonscription"] === feature.properties.num_circ
   )[0];
 
   if (!d4gCircoData) return; // because
@@ -27,7 +29,7 @@ function App() {
   const center = [45.7870226, 3.034855];
   const [selectedCirco, setSelectedCirco] = useState(null);
 
-  const [facet, setFacet] = useState(facets.leg22);
+  const [facet, setFacet] = useState(facets.euro19);
 
   const [d4gdata, setD4gData] = useState(null);
   const [loading, setLoading] = useState(true);
