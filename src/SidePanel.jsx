@@ -1,4 +1,5 @@
 import facets from "./facets";
+import { Ban, Check } from "./Icons";
 import { getDatanUrl, getTrendColor } from "./utils";
 
 const ResultFormatter = ({ label, percentage, trend }) => {
@@ -6,8 +7,8 @@ const ResultFormatter = ({ label, percentage, trend }) => {
 
   return (
     <div className="flex items-center justify-between gap-2">
-      <span className="text-2xl">{label}</span>
-      <span className="text-2xl font-bold">{percentage}%</span>
+      <span className="text-lg">{label}</span>
+      <span className="text-lg font-bold">{percentage}%</span>
       <span className={`text-sm ${trendColor}`}>{trend}</span>
     </div>
   );
@@ -16,22 +17,18 @@ const ResultFormatter = ({ label, percentage, trend }) => {
 const CandidateFormatter = ({ label, candidate }) => {
   return (
     <div className="flex items-center justify-between gap-2">
-      <span className="text-2xl">{label}</span>
-      <span className="text-2xl font-bold">{candidate}</span>
+      <span className="text-lg">{label}</span>
+      <span className="text-lg font-bold">{candidate}</span>
     </div>
   );
 };
 
-const TrendFormatter = ({ label, trend }) => {
-  const trendColor = getTrendColor(trend);
-
+const BooleanFormatter = ({ label, bool }) => {
   return (
-    <div className="flex items-center justify-between gap-2">
-      <span>{label}</span>
-      <span className={`text-xl ${trendColor}`}>
-        {parseFloat(trend).toFixed(2)}
-      </span>
-    </div>
+    <li className="flex items-center justify-between gap-2">
+      {label}
+      {bool ? <Check /> : <Ban />}
+    </li>
   );
 };
 
@@ -212,26 +209,26 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
                 />
               </div>
             </div>
-            <div className="p-4">
+            <div className="py-4">
               <div className="grid gap-4">
                 <li>
                   <b>Statistiques :</b>
                 </li>
-                <TrendFormatter
-                  label="Réserve NFP RN Européennes"
-                  trend={d4gCircoData?.ratio_reserve_diff_NFP_RN_euro}
+                <BooleanFormatter
+                  label="Swing circo"
+                  bool={d4gCircoData?.swing_circo === "True"}
                 />
-                <TrendFormatter
-                  label="Réserve NFP RN Législatives"
-                  trend={d4gCircoData?.ratio_reserve_diff_NFP_RN_leg22}
+                <BooleanFormatter
+                  label="NFP victoire petite marge"
+                  bool={d4gCircoData?.NFP_victoire_petite_marge === "True"}
                 />
-                <TrendFormatter
-                  label="Réserve ENS RN Européennes"
-                  trend={d4gCircoData?.ratio_reserve_diff_ENS_RN_euro}
+                <BooleanFormatter
+                  label="NFP défaite petite marge"
+                  bool={d4gCircoData?.NFP_defaite_petite_marge === "True"}
                 />
-                <TrendFormatter
-                  label="Réserve ENS RN Législatives"
-                  trend={d4gCircoData?.ratio_reserve_diff_ENS_RN_leg22}
+                <BooleanFormatter
+                  label="Dynamique RN > moyenne"
+                  bool={d4gCircoData?.dyn_RN_above_mean === "True"}
                 />
               </div>
             </div>

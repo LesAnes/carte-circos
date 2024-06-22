@@ -52,10 +52,24 @@ export function getPartyColor(party) {
     case "LUG":
     case "LA FRANCE INSOUMISE":
       return "#cc2443";
+    case "UDI":
+      return "#00FFFF";
     case "LR":
     case "LLR":
       return "#0066CC";
+    case "REG":
+      return "#FFCC33";
+    case "DVD":
+      return "#ADC1FD";
+    case "DVG":
+      return "#FFC0C0";
+    default:
+      return "#3388ff";
   }
+}
+
+export function getBooleanColor(bool) {
+  return bool === "True" ? "#22c55e" : "#ef4444";
 }
 
 export function getTrendColor(trend) {
