@@ -244,7 +244,7 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
 
 export function SidePanel({ selectedCirco, d4gdata, facet, setFacet }) {
   return (
-    <div className="max-w-sm p-6 mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full max-w-sm p-6 mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         Analyse des circonscriptions
       </h5>
