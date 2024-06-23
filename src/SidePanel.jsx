@@ -232,9 +232,6 @@ function SelectedCircoResults({ properties, d4gdata, facet }) {
                 />
               </div>
             </div>
-            <a href={d4gCircoData?.analyse_electorale} target="_blank">
-              Analyse électorale
-            </a>
           </>
         ) : null}
       </ul>
@@ -272,6 +269,13 @@ export function SidePanel({ selectedCirco, d4gdata, facet, setFacet }) {
             d4gdata={d4gdata}
             facet={facet}
           />
+          <p className="col-span-3 py-1 text-xs text-gray-400">
+            Crédit{" "}
+            <a href="https://dataforgood.fr" target="_blank">
+              Data For Good
+            </a>{" "}
+            pour les données
+          </p>
         </>
       ) : (
         <p className="text-sm text-gray-500">
