@@ -60,9 +60,9 @@ function App() {
       {!loading ? (
         <div className="flex flex-col h-full">
           <h1 className="text-left font-black italic text-[#fd454d] uppercase text-5xl leading-10">Mettez une majoritée Front Populaire à l'Assemblée</h1>
-          <div className="grid grid-cols-1 flex-1 gap-4 md:grid-cols-2 md:flex-row">
+          <div className="grid grid-cols-1 mt-6 flex-1 gap-4 md:grid-cols-2 md:flex-row">
             <div className="flex flex-col">
-              <h2 className="text-left font-black">Rejoignez les boucles de campagne dans les circos clés et participez à une action</h2>
+              <h2 className="text-left font-black text-xl">Rejoignez les boucles de campagne dans les circos clés et participez à une action</h2>
               <MapContainer
                 className="flex-1 col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow min-h-96 dark:bg-gray-800 dark:border-gray-700"
                 center={center}
@@ -104,7 +104,7 @@ function App() {
                   </Popup>
                 }
               </MapContainer>
-              <h2 className="text-left font-black">Vous voulez ajouter une action ? C'est ici !</h2>
+              <h2 className="text-left font-black text-xl">Vous voulez ajouter une action ? C'est ici !</h2>
             </div>
             <div className="flex flex-col justify-center">
               <RedirectionLink>
