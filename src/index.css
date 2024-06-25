@@ -34,11 +34,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -56,6 +51,15 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.custom-popup .leaflet-popup-content-wrapper,
+.custom-popup .leaflet-popup-tip {
+  background: #1f2937;
+}
+
+.custom-popup .leaflet-popup-content-wrapper .leaflet-popup-content {
+  margin: 0;
 }
 
 @media (prefers-color-scheme: light) {
