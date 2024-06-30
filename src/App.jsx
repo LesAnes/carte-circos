@@ -36,9 +36,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resp = await fetch(
-          "https://circos.services.dataforgood.fr/circos.json"
-        );
+        const resp = await fetch(import.meta.env.VITE_CIRCOS_DATA_URL);
         const jsonData = await resp.json();
         setD4gData(jsonData);
         setLoading(false);
